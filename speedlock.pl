@@ -30,7 +30,7 @@ sub run_or_die_with_print {
   }
   my $RES = `$COMMAND`;
   if ($? != 0) {
-    alarmAndDie("$COMMAND failed");
+    alarm_and_die("$COMMAND failed");
   }
   return $RES;
 }
@@ -74,7 +74,7 @@ sub try_push {
     my $BRANCH_NAME = time;
     my $SUCCESS = build($BRANCH_NAME);
     if (not $SUCCESS) {
-      alarmAndDie("You have to fix something, see travis for more informations");
+      alarm_and_die("You have to fix something, see travis for more informations");
     }
 
     run_or_die("git branch -D $SPRINT_BRANCH");
