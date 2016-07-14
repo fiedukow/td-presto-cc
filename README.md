@@ -40,3 +40,24 @@ Travis CLI installation and configuration
 - `$ travis login`
 
 
+change\_version.pl
+==================
+
+**WARNING - THIS IS NOT WELL TESTED - USE AT YOUR OWN RISK!**
+
+This script is ment to change version of presto in mvn configuration (pom.xml) of all modules.
+It may be used to create both snapshot and release by defining proper tag argument.
+
+Usage
+-----
+
+To use the script just run following command in presto repository.
+
+- `change_version.sh [NewVersion] [NewTag]` - basic usage
+
+Examples
+--------
+
+- `change_version.sh 0.148-t.1-SNAPSHOT HEAD` - change version to SNAPSHOT
+- `change_version.sh 0.148-t.1 0.148-t.1` - change version to release 0.148-t.1. Make sure that git tag `0.148-t.1` is marked.
+
