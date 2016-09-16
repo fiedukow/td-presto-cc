@@ -1,5 +1,6 @@
 #!/bin/bash
 SSH_LOGIN="root"
+SUDO="sudo"
 HOSTS_FILE="/etc/hosts"
 GENERATED_HOSTS_FILE="hosts_tmp"
 INPUT_FILE_PATH=$1
@@ -23,7 +24,7 @@ function ssh_for_each {
   while read host_name public_ip private_ip
   do
     echo "      * Executing on $host_name"
-    ssh -n root@$public_ip -i $SSH_PRIVATE_KEY_PATH -o StrictHostKeyChecking=no "$@" 2>>$hostname.ssh.log
+    ssh -n 2>>"$host_name.ssh.log" $SSH_LOGIN@$public_ip -i $SSH_PRIVATE_KEY_PATH -o StrictHostKeyChecking=no "$SUDO $@"
   done < "$INPUT_FILE_PATH"
 }
 
